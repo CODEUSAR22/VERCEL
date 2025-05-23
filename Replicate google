@@ -1,0 +1,72 @@
+
+CREATE A REPLICATE OF GOOGLE 
+Creating a full replica of Google is a massive task, but I can help you create a simplified version of the Google homepage with a search bar and some basic styling. This will include a logo, a search input, and buttons for search and I'm Feeling Lucky. Here's how it can be done:
+
+
+V1
+Google Homepage
+google-homepage.tsx
+Explanation:
+State Management: The useState hook is used to manage the search query.
+Search Functionality: The handleSearch function opens a new tab with the Google search results for the entered query.
+I'm Feeling Lucky Functionality: The handleImFeelingLucky function opens a new tab with the Google "I'm Feeling Lucky" result for the entered query.
+Styling: Tailwind CSS classes are used for styling the layout and components.
+Logo: The Google logo is included using an <img> tag with the official Google logo URL.
+Input and Buttons: The Input and Button components from Shadcn UI are used for the search bar and buttons, respectively. The Search icon from Lucide React is used in the "Google Search" button.
+This component provides a simplified version of the Google homepage with a search bar and the two main buttons.
+
+
+
+Follow up
+
+Code
+Description
+
+
+google-homepage v1
+CodePreview
+import { useState } from 'react'
+import { Input } from "/components/ui/input"
+import { Button } from "/components/ui/button"
+import { Search } from "lucide-react"
+
+export default function GoogleHomepage() {
+  const [query, setQuery] = useState('')
+
+  const handleSearch = () => {
+    if (query) {
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank')
+    }
+  }
+
+  const handleImFeelingLucky = () => {
+    if (query) {
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}&btnI`, '_blank')
+    }
+  }
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
+      <div className="mb-8">
+        <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google Logo" className="w-64 h-auto" />
+      </div>
+      <div className="w-full max-w-2xl mb-4">
+        <Input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search Google or type a URL"
+          className="w-full py-3 px-4 rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+      <div className="flex space-x-4">
+        <Button onClick={handleSearch} className="w-full py-3 rounded-full shadow-md">
+          <Search className="mr-2" /> Google Search
+        </Button>
+        <Button onClick={handleImFeelingLucky} className="w-full py-3 rounded-full shadow-md">
+          I'm Feeling Lucky
+        </Button>
+      </div>
+    </div>
+  )
+}
