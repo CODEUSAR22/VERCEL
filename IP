@@ -1,3 +1,4 @@
+WEBSITE MIGHT NOT WORK FOR SOME PEOPLE ILL TRY AND MAKE A NEW URL!
 import { useState } from 'react'
 import { Button } from "/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "/components/ui/card"
@@ -117,6 +118,5 @@ export default function ProxyApp() {
     </div>
   )
 }
-Share
-Refresh
+
 
